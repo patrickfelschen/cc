@@ -1,5 +1,3 @@
-// https://github.com/beneater/boids
-
 class Boid {
     constructor(x, y, dx, dy, color) {
         this.color = color;
@@ -10,32 +8,35 @@ class Boid {
         this.tailLength = random(-10, -20);
     }
 
+    // Berechnet neue Position aus der Geschwindigkeit.
     update() {
         this.tail.push(createVector(this.pos.x, this.pos.y));
         this.tail = this.tail.slice(this.tailLength);
         this.pos = this.pos.add(this.velocity);
     }
 
+    // Zeichnet Boid inkl. Tail.
     render() {
+        // Tail
         noStroke();
         fill(this.color);
         this.tail.forEach(tailPos => {
             ellipse(tailPos.x, tailPos.y, this.size, this.size);
         });
-
+        // Ausrichgung des Kopfes je nach Bewegungsrichtung.
         push();
-        const angle = atan2(this.velocity.y, this.velocity.x);
         translate(this.pos.x, this.pos.y);
-        rotate(angle);
+        rotate(this.velocity.heading());
         translate(-this.pos.x, -this.pos.y);
-
-        fill(this.color);
+        // Kopf
         noStroke();
         ellipse(this.pos.x, this.pos.y, this.size, this.size);
+        // Augen
         fill(0);
         ellipse(this.pos.x + 3, this.pos.y + 3, this.size / 5, this.size / 5);
-        ellipse(this.pos.x + 3, this.pos.y - 3, this.size / 5, this.size/ 5);
+        ellipse(this.pos.x + 3, this.pos.y - 3, this.size / 5, this.size / 5);
         pop();
     }
-
 }
+
+// https://github.com/beneater/boids

@@ -1,14 +1,12 @@
-// https://github.com/beneater/boids
-
 let boids;
-const visualRange = 75;
+const visualRange = 60;
 
 class Flock {
     constructor() {
         boids = [];
     }
 
-    // Generiert zufaellige Farbe
+    // Generiert zufällige Farbe
     randomColor() {
         return 'rgba('
             + Math.floor(random(0, 255)) + ', '
@@ -17,14 +15,14 @@ class Flock {
             + ', 0.40)';
     }
 
-    // Generiert zufaellige Boids
+    // Generiert zufällige Boids
     createBoids(count) {
         for (let i = 0; i < count; i++) {
             let newBoid = new Boid(
                 random() * windowWidth,
                 random() * windowHeight,
-                random() * 10,
-                random() * 10,
+                random(-1, 1) * 12,
+                random(-1, 1) * 12,
                 this.randomColor()
             );
             boids.push(newBoid);
@@ -71,13 +69,8 @@ function keepWithinBounds(boid) {
     }
 }
 
-// Gibt n Boids zurueck mit geringster Distanz
-function nClosestBoids(boid, n) {
-    const sorted = boids.slice();
-    sorted.sort((a, b) => boid.pos.dist(a.pos) - boid.pos.dist(b.pos));
-    return sorted.slice(1, n + 1);
-}
-
+// Alle Boids steuern ein errechnetes Zentrum von einer
+// Boidsammlung an.
 function flyTowardsCenter(boid) {
     const centeringFactor = 0.0005; // adjust velocity by this %
 
@@ -85,7 +78,7 @@ function flyTowardsCenter(boid) {
     let centerY = 0;
     let numNeighbors = 0;
 
-    nClosestBoids(boid,10).forEach(function(otherBoid){
+    boids.forEach(function (otherBoid) {
         if (boid.pos.dist(otherBoid.pos) < visualRange) {
             centerX += otherBoid.pos.x;
             centerY += otherBoid.pos.y;
@@ -102,13 +95,14 @@ function flyTowardsCenter(boid) {
     }
 }
 
+// Boids halten Abstand zu anderen Boids.
 function avoidOthers(boid) {
-    const minDistance = 30; // The distance to stay away from other boids
-    const avoidFactor = 0.025; // Adjust velocity by this %
+    const minDistance = 30;
+    const avoidFactor = 0.025;
     let moveX = 0;
     let moveY = 0;
 
-    nClosestBoids(boid, 10).forEach(function (otherBoid){
+    boids.forEach(function (otherBoid) {
         if (otherBoid !== boid) {
             if (boid.pos.dist(otherBoid.pos) < minDistance) {
                 moveX += boid.pos.x - otherBoid.pos.x;
@@ -121,14 +115,16 @@ function avoidOthers(boid) {
     boid.velocity.y += moveY * avoidFactor;
 }
 
+// Boids passen ihre Geschwindigkeit im Bezug auf den
+// umliegenden Boids an.
 function matchVelocity(boid) {
-    const matchingFactor = 0.025; // Adjust by this % of average velocity
+    const matchingFactor = 0.025;
 
     let avgDX = 0;
     let avgDY = 0;
     let numNeighbors = 0;
 
-    nClosestBoids(boid,10).forEach(function(otherBoid){
+    boids.forEach(function (otherBoid) {
         if (boid.pos.dist(otherBoid.pos) < visualRange) {
             avgDX += otherBoid.velocity.x;
             avgDY += otherBoid.velocity.y;
@@ -145,8 +141,9 @@ function matchVelocity(boid) {
     }
 }
 
+// Anpassung der maximalen Geschwindigkeit der Boids.
 function limitSpeed(boid) {
-    const speedLimit = 8;
+    const speedLimit = 15;
 
     const speed = boid.velocity.mag();
     if (speed > speedLimit) {
@@ -155,9 +152,10 @@ function limitSpeed(boid) {
     }
 }
 
+// Boids halten Abstand vorm Maus-Cursor.
 function avoidMouse(boid) {
-    const minDistance = 30; // 30; // The distance to stay away from other boids
-    const avoidFactor = 0.3; // Adjust velocity by this %
+    const minDistance = 30;
+    const avoidFactor = 0.03;
     let moveX = 0;
     let moveY = 0;
     let mouse = createVector(mouseX, mouseY);
@@ -170,3 +168,5 @@ function avoidMouse(boid) {
     boid.velocity.x += moveX * avoidFactor;
     boid.velocity.y += moveY * avoidFactor;
 }
+
+// https://github.com/beneater/boids

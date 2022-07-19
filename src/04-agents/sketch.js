@@ -4,24 +4,24 @@ let canvas;
 let flock;
 
 function setup() {
-  canvas = createCanvas(windowWidth, windowHeight);
-  flock = new Flock();
-  flock.createBoids(100);
-  background(200);
+    canvas = createCanvas(windowWidth, windowHeight);
+    flock = new Flock();
+    flock.createBoids(100);
 }
 
 function draw() {
-  clear();
-  flock.update();
-  flock.render();
+    background(200);
+    clear();
+    flock.update();
+    flock.render();
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+    resizeCanvas(windowWidth, windowHeight);
 }
 
 function keyPressed() {
-  if (key === 's') {
-    saveCanvas(canvas, fileName, 'jpg');
-  }
+    if (key === 's') {
+        saveCanvas(canvas, fileName, 'jpg');
+    }
 }
