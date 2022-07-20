@@ -1,6 +1,16 @@
 let boids;
 const visualRange = 60;
 
+const speedLimit = 15;
+
+const centeringFactor = 0.0005; // adjust velocity by this %
+
+const minDistance = 30;
+const avoidFactor = 0.025;
+
+const minMouseDistance = 30;
+const avoidMouseFactor = 0.03;
+
 class Flock {
     constructor() {
         boids = [];
@@ -21,8 +31,8 @@ class Flock {
             let newBoid = new Boid(
                 random() * windowWidth,
                 random() * windowHeight,
-                random(-1, 1) * 12,
-                random(-1, 1) * 12,
+                random(-1, 1) * speedLimit,
+                random(-1, 1) * speedLimit,
                 this.randomColor()
             );
             boids.push(newBoid);
@@ -72,8 +82,6 @@ function keepWithinBounds(boid) {
 // Alle Boids steuern ein errechnetes Zentrum von einer
 // Boidsammlung an.
 function flyTowardsCenter(boid) {
-    const centeringFactor = 0.0005; // adjust velocity by this %
-
     let centerX = 0;
     let centerY = 0;
     let numNeighbors = 0;
@@ -97,8 +105,6 @@ function flyTowardsCenter(boid) {
 
 // Boids halten Abstand zu anderen Boids.
 function avoidOthers(boid) {
-    const minDistance = 30;
-    const avoidFactor = 0.025;
     let moveX = 0;
     let moveY = 0;
 
@@ -143,8 +149,6 @@ function matchVelocity(boid) {
 
 // Anpassung der maximalen Geschwindigkeit der Boids.
 function limitSpeed(boid) {
-    const speedLimit = 15;
-
     const speed = boid.velocity.mag();
     if (speed > speedLimit) {
         boid.velocity.x = (boid.velocity.x / speed) * speedLimit;
@@ -154,19 +158,17 @@ function limitSpeed(boid) {
 
 // Boids halten Abstand vorm Maus-Cursor.
 function avoidMouse(boid) {
-    const minDistance = 30;
-    const avoidFactor = 0.03;
     let moveX = 0;
     let moveY = 0;
     let mouse = createVector(mouseX, mouseY);
 
-    if (boid.pos.dist(mouse) < minDistance) {
+    if (boid.pos.dist(mouse) < minMouseDistance) {
         moveX += boid.pos.x - mouse.x;
         moveY += boid.pos.y - mouse.y;
     }
 
-    boid.velocity.x += moveX * avoidFactor;
-    boid.velocity.y += moveY * avoidFactor;
+    boid.velocity.x += moveX * avoidMouseFactor;
+    boid.velocity.y += moveY * avoidMouseFactor;
 }
 
 // https://github.com/beneater/boids
