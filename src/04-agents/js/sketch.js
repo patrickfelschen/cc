@@ -10,8 +10,7 @@ function setup() {
 }
 
 function draw() {
-    background(200);
-    clear();
+    background(50);
     flock.update();
     flock.render();
 }

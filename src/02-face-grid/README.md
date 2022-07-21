@@ -8,4 +8,4 @@ Ordner: CC-SS22/<nachname-vorname>/02-face-grid
 
 ### Abgabe-Screenshot:
 
-![Screenshot](Screenshot.jpeg)
+![Screenshot](exports/CC_Aufgabe_02_Canvas.jpeg)

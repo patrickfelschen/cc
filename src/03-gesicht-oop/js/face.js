@@ -1,18 +1,24 @@
 class Face {
-    constructor(LR = random(-7, 7),
-                OU = random(-7, 7),
-                r = random(0, 255),
-                g = random(0, 255),
-                b = random(0, 255),
-                nase = random(-20, 20),
-                hut = random(-20, 35),
-                mund = random(-100, 50),
-                z1 = random(0, 1),
-                z2 = random(0, 1),
-                z3 = random(0, 1),
-                z4 = random(0, 1),
-                haare = random(0, 1),
-                blinzeln = random(0, 1)
+    constructor(
+        x = random(0, windowWidth - 200),
+        y = random(0, windowHeight - 200),
+        velX = random(-1, 1) * 5,
+        velY = random(-1, 1) * 5,
+        scale = 1.0,
+        LR = random(-7, 7),
+        OU = random(-7, 7),
+        r = random(0, 255),
+        g = random(0, 255),
+        b = random(0, 255),
+        nase = random(-20, 20),
+        hut = random(-20, 35),
+        mund = random(-100, 50),
+        z1 = random(0, 1),
+        z2 = random(0, 1),
+        z3 = random(0, 1),
+        z4 = random(0, 1),
+        haare = random(0, 1),
+        blinzeln = random(0, 1)
     ) {
         this._LR = LR;
         this._OU = OU;
@@ -28,6 +34,51 @@ class Face {
         this._z4 = z4;
         this._haare = haare;
         this._blinzeln = blinzeln;
+        this._x = x;
+        this._y = y;
+        this._velX = velX;
+        this._velY = velY;
+        this._scale = scale;
+    }
+
+    get scale() {
+        return this._scale;
+    }
+
+    set scale(value) {
+        this._scale = value;
+    }
+
+    get velX() {
+        return this._velX;
+    }
+
+    set velX(value) {
+        this._velX = value;
+    }
+
+    get velY() {
+        return this._velY;
+    }
+
+    set velY(value) {
+        this._velY = value;
+    }
+
+    get x() {
+        return this._x;
+    }
+
+    set x(value) {
+        this._x = value;
+    }
+
+    get y() {
+        return this._y;
+    }
+
+    set y(value) {
+        this._y = value;
     }
 
     get LR() {
@@ -142,10 +193,11 @@ class Face {
         this._blinzeln = value;
     }
 
-    render(x = 0, y = 0, s = 1.0) {
+    render() {
         push();
-        translate(x, y);
-        scale(s);
+
+        translate(this.x, this.y);
+        scale(this.scale);
 
         const hautfarbe = color('#FFCC99');
         const hautfarbe2 = color('#FEB186');
@@ -153,7 +205,6 @@ class Face {
         const mundfarbe = color('darkred');
 
         // Random Farbe
-        colorMode(RGB, 100);
         const hutfarbe = color(this._r, this._g, this._b);
 
         noStroke();
@@ -197,7 +248,7 @@ class Face {
         triangle(100, 75 + this._nase, 75, 110 + this._nase, 125, 110 + this._nase);
         // Mund
         fill(mundfarbe);
-        arc(100, 150, 120, 100 + this._mund, 0, PI, CHORD);
+        arc(100, 150, 120, this._mund, 0, PI, CHORD);
         // Zaehne
         fill(255);
         if (this._z1 > 0.5) rect(55, 150, 20, 10);
@@ -206,16 +257,14 @@ class Face {
         if (this._z4 > 0.5) rect(130, 150, 20, 10);
         // Hut
         if (this._haare > 0.1) {
-            strokeWeight(1);
             fill(hutfarbe);
             rect(0, -30 + this._hut, 200, 40, 20);
             rect(25, -100 + this._hut, 150, 80, 10);
         } else {
-            stroke(0);
             strokeWeight(2);
+            stroke(0);
             line(110, -20, 105, -50);
             line(100, -20, 105, -50);
-            noStroke();
         }
 
         pop();

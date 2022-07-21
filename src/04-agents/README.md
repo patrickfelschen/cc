@@ -8,4 +8,5 @@ Ordner: CC-SS22/<nachname-vorname>/04-agents
 
 ### Abgabe-Screenshot:
 
-![Screenshot](Screenshot.jpeg)
+![Screenshot](exports/CC_Aufgabe_04_Canvas_01.jpeg)
+![Screenshot](exports/CC_Aufgabe_04_Canvas_02.jpeg)

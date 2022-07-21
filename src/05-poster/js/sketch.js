@@ -16,7 +16,6 @@ let songData = [];
 let scaleRatio = 1;
 let exportRatio = 10;
 let canvas, buffer;
-
 let w, h;
 
 const paperSizeIndex = 1;
@@ -33,19 +32,14 @@ const paperSizes = [{
 
 function preload() {
     song = loadSound('../../data/' + songs[selectedSong]);
-    //song.rate(100);
 }
 
 function setup() {
-    angleMode(DEGREES);
-
     w = paperSizes[paperSizeIndex].width / exportRatio;
     h = paperSizes[paperSizeIndex].height / exportRatio;
     buffer = createGraphics(w, h);
     canvas = createCanvas(w, h);
     exportRatio /= pixelDensity();
-
-    buffer.background(255);
 
     fft = new p5.FFT();
 }
@@ -83,16 +77,11 @@ function draw() {
 
     songData.push(data);
 
-    // drawFrame(data);
-
-    image(buffer, 0, 0);
+    //drawFrame(data);
+    //image(buffer, 0, 0);
 }
 
 function drawFrame(data) {
-    buffer.push();
-    buffer.scale(scaleRatio);
-    buffer.translate(w / 2, h / 2);
-
     const alpha = 0.05;
     const bassColor = 'rgba(255, 100, 100, ' + alpha + ')';
     const lowMidColor = 'rgba(255, 255, 100, ' + alpha + ')';
@@ -100,6 +89,12 @@ function drawFrame(data) {
     const highMidColor = 'rgba(255, 100, 255, ' + alpha + ')';
     const highColor = 'rgba(100, 100, 255, ' + alpha + ')';
 
+    const eSize = 2;
+
+    buffer.push();
+    buffer.scale(scaleRatio);
+    buffer.translate(w / 2, h / 2);
+    angleMode(DEGREES);
     for (let i = 0; i < 360; i++) {
         let s = 360 / 5;
         let x = 0;
@@ -108,46 +103,38 @@ function drawFrame(data) {
         let cosI = cos(i);
         let sinI = sin(i);
 
-        let eSize = 2; // map(vol, 0, 1, 5, 20);
-
+        buffer.noStroke();
         if (i < s) {
             x = data.bassAmp * cosI;
             y = data.bassAmp * sinI;
-            buffer.noStroke();
             buffer.fill(bassColor);
             buffer.ellipse(x, y, eSize);
         } else if (i < 2 * s) {
             x = data.lowMidAmp * cosI;
             y = data.lowMidAmp * sinI;
-            buffer.noStroke();
             buffer.fill(lowMidColor);
             buffer.ellipse(x, y, eSize);
         } else if (i < 3 * s) {
             x = data.midAmp * cosI;
             y = data.midAmp * sinI;
-            buffer.noStroke();
             buffer.fill(midColor);
             buffer.ellipse(x, y, eSize);
         } else if (i < 4 * s) {
             x = data.highMidAmp * cosI;
             y = data.highMidAmp * sinI;
-            buffer.noStroke();
             buffer.fill(highMidColor);
             buffer.ellipse(x, y, eSize);
         } else if (i < 5 * s) {
             x = data.highAmp * cosI;
             y = data.highAmp * sinI;
-            buffer.noStroke();
             buffer.fill(highColor);
             buffer.ellipse(x, y, eSize);
         }
     }
-
     buffer.pop();
 }
 
 function drawMusic() {
-    console.log(songData.length);
 
     songData.forEach(data => {
         drawFrame(data);
@@ -163,11 +150,8 @@ function exportHighResolution() {
     buffer = createGraphics(scaleRatio * width, scaleRatio * height);
     drawMusic();
 
-    // Get timestamp to name the ouput file
-    let timestamp = new Date().getTime();
-
     // Save as PNG
-    save(buffer, songs[selectedSong] + " " + str(timestamp), 'png');
+    save(buffer, songs[selectedSong] + "_HighRes", 'png');
 
     // Reset scaleRation back to 1, re-create buffer, re-draw
     scaleRatio = 1;
@@ -187,7 +171,7 @@ function keyPressed() {
         exportHighResolution();
     }
     if (key === 's') {
-        saveCanvas(canvas, songs[selectedSong], 'jpg');
+        saveCanvas(canvas, songs[selectedSong] + "_Canvas", 'jpg');
     }
 }
 

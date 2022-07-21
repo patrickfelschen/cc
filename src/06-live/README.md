@@ -9,9 +9,9 @@ Ordner:  CC-SS22/<nachname-vorname>/06-live
 
 ### Abgabe-Screenshots
 
-Scene_1_Screenshot.jpg
-![Screenshot1](./Screenshots/Scene_1_Screenshot.jpg)
-Scene_2_Screenshot.jpg
-![Screenshot2](./Screenshots/Scene_2_Screenshot.jpg)
-Scene_3_Screenshot.jpg
-![Screenshot3](./Screenshots/Scene_3_Screenshot.jpg)
+Scene 1
+![Screenshot1](exports/CC_Aufgabe_06_Scene_1_Canvas.jpg)
+Scene 2
+![Screenshot2](exports/CC_Aufgabe_06_Scene_2_Canvas.jpg)
+Scene 3
+![Screenshot3](exports/CC_Aufgabe_06_Scene_3_Canvas.jpg)

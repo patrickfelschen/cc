@@ -16,13 +16,11 @@ class BoidScene extends Scene {
         for (let i = 0; i < count / 3; i++) {
             this.highBoids[i] = new Boid();
         }
-
     }
 
     render(data) {
         let dx = map(data.bassAmp, 0, 255, -5, 1);
         let dy = map(data.highAmp, 0, 255, -5, 1);
-
         this.bassBoids.forEach(boid => {
             boid.velocity.x = dx;
             boid.velocity.y = dy;

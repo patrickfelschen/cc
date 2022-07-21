@@ -11,7 +11,7 @@ function setup() {
 }
 
 function draw() {
-    background(200);
+    background(50);
     drawFace(
         (windowWidth / 2) - 100,
         (windowHeight / 2) - 80,

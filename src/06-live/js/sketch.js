@@ -15,7 +15,7 @@ const songs = [
 ];
 
 let canvas;
-let count = 0;
+let time = 0;
 
 function preload() {
     song = loadSound('../../data/' + songs[selectedSong]);
@@ -35,11 +35,11 @@ function setup() {
 function draw() {
     if (!song.isPlaying()) return;
 
-    count += deltaTime;
+    time += deltaTime;
 
-    if (count >= 4000) {
+    if (time >= 4000) {
         currentScene = random(scenes);
-        count = 0;
+        time = 0;
     }
 
     spectrum = fft.analyze();
@@ -71,10 +71,6 @@ function draw() {
     });
 
     background(fft.getEnergy("bass") / 2, fft.getEnergy("mid") / 2, fft.getEnergy("treble") / 2);
-    drawFrame(data);
-}
-
-function drawFrame(data) {
     currentScene.render(data);
 }
 

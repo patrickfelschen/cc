@@ -6,4 +6,4 @@ Ordner: CC-SS22/<nachname-vorname>/01-portrait
 
 ### Abgabe-Screenshot:
 
-![Screenshot](Screenshot.jpeg)
+![Screenshot](exports/CC_Aufgabe_01_Canvas.jpeg)

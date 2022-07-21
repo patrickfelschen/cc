@@ -1,3 +1,4 @@
+// Generiert zufällige Farbe
 function randomColor() {
     return 'rgba('
         + Math.floor(random(0, 255)) + ', '
@@ -18,9 +19,8 @@ class Boid {
         this.velocity = createVector(dx, dy);
         this.size = 20;
         this.tail = [];
-        this.tailLength = random(-5, -25);
+        this.tailLength = random(-10, -20);
     }
-
 
     // Berechnet neue Position aus der Geschwindigkeit.
     update() {

@@ -8,4 +8,7 @@ Ordner: CC-SS22/<nachname-vorname>/03-gesicht-oop
 
 ### Abgabe-Screenshot:
 
-![Screenshot](Screenshot.jpeg)
+![Screenshot](exports/CC_Aufgabe_03_Canvas_01.jpeg)
+![Screenshot](exports/CC_Aufgabe_03_Canvas_02.jpeg)
+![Screenshot](exports/CC_Aufgabe_03_Canvas_03.jpeg)
+![Screenshot](exports/CC_Aufgabe_03_Canvas_04.jpeg)

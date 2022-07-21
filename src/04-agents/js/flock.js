@@ -16,15 +16,6 @@ class Flock {
         boids = [];
     }
 
-    // Generiert zufällige Farbe
-    randomColor() {
-        return 'rgba('
-            + Math.floor(random(0, 255)) + ', '
-            + Math.floor(random(0, 255)) + ', '
-            + Math.floor(random(0, 255))
-            + ', 0.40)';
-    }
-
     // Generiert zufällige Boids
     createBoids(count) {
         for (let i = 0; i < count; i++) {
@@ -33,7 +24,6 @@ class Flock {
                 random() * windowHeight,
                 random(-1, 1) * speedLimit,
                 random(-1, 1) * speedLimit,
-                this.randomColor()
             );
             boids.push(newBoid);
         }
