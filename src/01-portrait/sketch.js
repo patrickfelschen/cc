@@ -1,20 +1,23 @@
 const fileName = 'CC_Aufgabe_01_Canvas';
-let canvas;
-let frame;
+let canvas, frame;
 
 function preload() {
-    frame = loadImage('../../data/frame_square.png');
+    //frame = loadImage('../../data/frame_square.png');
 }
 
 function setup() {
-    canvas = createCanvas(window.innerWidth, window.innerHeight);
-    background(200);
-    fill(255);
-    image(frame, 0, 0, window.innerWidth, window.innerHeight);
+    canvas = createCanvas(windowWidth, windowHeight);
+    //image(frame, 0, 0, windowWidth, windowHeight);
 }
 
 function draw() {
-    drawFace((window.innerWidth / 2) - 100, (window.innerHeight / 2) - 80, 7, 0);
+    background(200);
+    drawFace(
+        (windowWidth / 2) - 100,
+        (windowHeight / 2) - 80,
+        7,
+        0
+    );
 }
 
 function drawFace(x, y, LR, OU) {
@@ -77,4 +80,8 @@ function keyPressed() {
     if (key === 's') {
         saveCanvas(canvas, fileName, 'jpg');
     }
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
 }

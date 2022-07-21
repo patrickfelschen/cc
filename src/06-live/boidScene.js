@@ -19,9 +19,6 @@ class BoidScene extends Scene {
 
     }
 
-    update() {
-    }
-
     render(data) {
         let dx = map(data.bassAmp, 0, 255, -5, 1);
         let dy = map(data.highAmp, 0, 255, -5, 1);

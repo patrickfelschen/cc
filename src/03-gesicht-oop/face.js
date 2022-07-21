@@ -156,6 +156,7 @@ class Face {
         colorMode(RGB, 100);
         const hutfarbe = color(this._r, this._g, this._b);
 
+        noStroke();
         // Ohren
         fill(hautfarbe2);
         ellipse(-10, 100, 30, 100);
@@ -167,12 +168,14 @@ class Face {
         fill(hautfarbe);
         ellipse(100, 100, 220, 280);
         if (this._blinzeln > 0.9) {
+            stroke(0);
             // Auge links geschlossen
             fill(255);
             ellipse(50, 50, 40, 0);
             // Auge rechts geschlossen
             fill(255);
             ellipse(150, 50, 40, 0);
+            noStroke();
         } else {
             // Auge links geoeffnet
             fill(255);
@@ -208,9 +211,11 @@ class Face {
             rect(0, -30 + this._hut, 200, 40, 20);
             rect(25, -100 + this._hut, 150, 80, 10);
         } else {
+            stroke(0);
             strokeWeight(2);
             line(110, -20, 105, -50);
             line(100, -20, 105, -50);
+            noStroke();
         }
 
         pop();

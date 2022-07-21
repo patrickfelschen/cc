@@ -10,10 +10,6 @@ class FaceScene extends Scene {
         this.faces[4] = new Face();
     }
 
-    update() {
-
-    }
-
     render(data) {
 
         this.faces[0].mund = map(data.bassAmp, 0, 255, 0, -80);

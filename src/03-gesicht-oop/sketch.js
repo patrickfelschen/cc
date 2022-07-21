@@ -16,7 +16,7 @@ function setup() {
 
 function draw() {
     clear();
-    background(255);
+    background(50);
     drawFace();
 }
 

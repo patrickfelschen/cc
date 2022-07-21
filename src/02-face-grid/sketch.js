@@ -16,27 +16,24 @@ const paperSizes = [{
     height: 9933,
 }];
 
-let canvas;
-let frame;
+let canvas, frame;
 
 let faceParamsList = [];
 let rows = 6;
 let cols = 6;
 
 function preload() {
-    frame = loadImage('../../data/frame_square.png');
+  //frame = loadImage('../../data/frame_square.png');
 }
 
 function setup() {
   frameRate(10);
-  //canvas = createCanvas(window.innerWidth, window.innerHeight);
 
   let w = paperSizes[paperSizeIndex].width / exportRatio;
   let h = paperSizes[paperSizeIndex].height / exportRatio;
 
   buffer = createGraphics(w, h);
   canvas = createCanvas(w, h);
-
   exportRatio /= pixelDensity();
 
   buffer.background(255);
@@ -103,6 +100,7 @@ function drawFace(x, y, face) {
   // Random Farbe
   buffer.colorMode(RGB, 100);
   const hutfarbe = color(face.r, face.g, face.b);
+  buffer.noStroke();
   // Ohren
   buffer.fill(hautfarbe2);
   buffer.ellipse(-10, 100, 30, 100);
@@ -114,6 +112,7 @@ function drawFace(x, y, face) {
   buffer.fill(hautfarbe);
   buffer.ellipse(100, 100, 220, 280);
   if (face.blinzeln > 0.99) {
+    buffer.stroke(0);
     // Auge links geschlossen
     buffer.strokeWeight(1);
     buffer.fill(255);
@@ -121,6 +120,7 @@ function drawFace(x, y, face) {
     // Auge rechts geschlossen
     buffer.fill(255);
     buffer.ellipse(150, 50, 40, 0);
+    buffer.noStroke();
   } else {
     // Auge links geoeffnet
     buffer.fill(255);
@@ -156,6 +156,7 @@ function drawFace(x, y, face) {
     buffer.rect(0, -30 + face.hut, 200, 40, 20);
     buffer.rect(25, -100 + face.hut, 150, 80, 10);
   } else {
+    buffer.stroke(0);
     buffer.strokeWeight(2);
     buffer.line(110, -20, 105, -50);
     buffer.line(100, -20, 105, -50);
@@ -184,13 +185,17 @@ function exportHighResolution() {
 }
 
 function keyPressed() {
-    if (key === 's') {
-        saveCanvas(canvas, fileName, 'jpg');
-    }
-    if (key === "e") {
-        exportHighResolution();
-    }
-    if (key === "r") {
-        generateFaceParamsList();
-    }
+  if (key === 's') {
+    saveCanvas(canvas, fileName, 'jpg');
+  }
+  if (key === "e") {
+    exportHighResolution();
+  }
+  if (key === "r") {
+    generateFaceParamsList();
+  }
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
