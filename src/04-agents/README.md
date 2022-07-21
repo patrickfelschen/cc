@@ -5,3 +5,7 @@ Programmieren Sie Agenten, die sich autonom verhalten und sich über die Zeichen
 Abgabe: Quellcode, Screenshot(s)
 
 Ordner: CC-SS22/<nachname-vorname>/04-agents
+
+### Abgabe-Screenshot:
+
+![Screenshot](Screenshot.jpeg)

@@ -5,3 +5,7 @@ Erstellen Sie mit Hilfe von Schleifen ein Grid mit unterschiedlichen Variationen
 Abgabe: Quellcode, Screenshot(s)
 
 Ordner: CC-SS22/<nachname-vorname>/02-face-grid
+
+### Abgabe-Screenshot:
+
+![Screenshot](Screenshot.jpeg)

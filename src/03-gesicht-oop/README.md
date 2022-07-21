@@ -5,3 +5,7 @@ Das erstellte Gesicht aus Aufgabe 1 soll mit der Zuhilfenahme von Klassen objekt
 Abgabe: Quellcode, Screenshot(s)
 
 Ordner: CC-SS22/<nachname-vorname>/03-gesicht-oop
+
+### Abgabe-Screenshot:
+
+![Screenshot](Screenshot.jpeg)
