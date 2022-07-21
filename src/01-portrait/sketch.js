@@ -18,25 +18,26 @@ function draw() {
 }
 
 function drawFace(x, y, LR, OU) {
-  push();
-  translate(x, y);
-  
-  const hautfarbe = color('#FFCC99');
-  const hautfarbe2 = color('#FEB186');
-  const augenfarbe = color('green');
-  const mundfarbe = color('darkred');
-  const hutfarbe = color('darkblue');
-  
-  // Ohren
-  fill(hautfarbe2);
-  ellipse(-10, 100, 30, 100);
-  ellipse(210, 100, 30, 100);
-  // Hals
-  fill(hautfarbe);
-  rect(50, 200, 100, 60);
-  // Gesicht
-  fill(hautfarbe);
-  ellipse(100, 100, 220, 280);
+    push();
+    translate(x, y);
+
+    const hautfarbe = color('#FFCC99');
+    const hautfarbe2 = color('#FEB186');
+    const augenfarbe = color('green');
+    const mundfarbe = color('darkred');
+    const hutfarbe = color('darkblue');
+
+    noStroke();
+    // Ohren
+    fill(hautfarbe2);
+    ellipse(-10, 100, 30, 100);
+    ellipse(210, 100, 30, 100);
+    // Hals
+    fill(hautfarbe);
+    rect(50, 200, 100, 60);
+    // Gesicht
+    fill(hautfarbe);
+    ellipse(100, 100, 220, 280);
   // Auge links
   fill(255);
   ellipse(50, 50, 40);
@@ -73,7 +74,7 @@ function drawFace(x, y, LR, OU) {
 }
 
 function keyPressed() {
-    if (key == 's') {
+    if (key === 's') {
         saveCanvas(canvas, fileName, 'jpg');
     }
 }

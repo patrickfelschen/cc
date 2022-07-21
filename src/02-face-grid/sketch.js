@@ -103,7 +103,6 @@ function drawFace(x, y, face) {
   // Random Farbe
   buffer.colorMode(RGB, 100);
   const hutfarbe = color(face.r, face.g, face.b);
-  
   // Ohren
   buffer.fill(hautfarbe2);
   buffer.ellipse(-10, 100, 30, 100);
@@ -116,7 +115,8 @@ function drawFace(x, y, face) {
   buffer.ellipse(100, 100, 220, 280);
   if(face.blinzeln > 0.99){
     // Auge links geschlossen
-    buffer.fill(255);
+    buffer.strokeWeight(1);
+      buffer.fill(255);
     buffer.ellipse(50, 50, 40, 0);
     // Auge rechts geschlossen
     buffer.fill(255);
@@ -184,13 +184,13 @@ function exportHighResolution() {
 }
 
 function keyPressed() {
-  if (key == 's') {
-    saveCanvas(canvas, fileName, 'jpg');
-  }
-  if (key == "e") {
-    exportHighResolution();
-  }
-  if (key == "r") {
-    generateFaceParamsList();
-  }
+    if (key === 's') {
+        saveCanvas(canvas, fileName, 'jpg');
+    }
+    if (key === "e") {
+        exportHighResolution();
+    }
+    if (key === "r") {
+        generateFaceParamsList();
+    }
 }
