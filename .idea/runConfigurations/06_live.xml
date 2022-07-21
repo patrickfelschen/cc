@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="06-live" type="JavascriptDebugType" uri="http://localhost:63342/cc/src/06-live/index.html" useBuiltInWebServerPort="true">
+    <method v="2" />
+  </configuration>
+</component>
