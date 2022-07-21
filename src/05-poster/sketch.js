@@ -56,7 +56,7 @@ function draw() {
     spectrum = fft.analyze();
 
     let minAmp = 0;
-    let maxAmp = (w / 2) -10;
+    let maxAmp = (w / 2) - 10;
 
     let bassAmp = fft.getEnergy("bass");
     bassAmp = map(bassAmp, 0, 255, minAmp, maxAmp);
@@ -75,7 +75,7 @@ function draw() {
 
     let data = ({
         "bassAmp": bassAmp,
-        "lowMidAmp" : lowMidAmp,
+        "lowMidAmp": lowMidAmp,
         "midAmp": midAmp,
         "highMidAmp": highMidAmp,
         "highAmp": highAmp
@@ -88,10 +88,10 @@ function draw() {
     image(buffer, 0, 0);
 }
 
-function drawFrame(data){
+function drawFrame(data) {
     buffer.push();
     buffer.scale(scaleRatio);
-    buffer.translate(w /2, h / 2);
+    buffer.translate(w / 2, h / 2);
 
     const alpha = 0.05;
     const bassColor = 'rgba(255, 100, 100, ' + alpha + ')';

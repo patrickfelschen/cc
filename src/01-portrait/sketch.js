@@ -3,18 +3,18 @@ let canvas;
 let frame;
 
 function preload() {
-  frame = loadImage('../../data/frame_square.png');
+    frame = loadImage('../../data/frame_square.png');
 }
 
 function setup() {
-  canvas = createCanvas(window.innerWidth, window.innerHeight);
-  background(200);
-  fill(255);
-  image(frame, 0, 0, window.innerWidth, window.innerHeight);
+    canvas = createCanvas(window.innerWidth, window.innerHeight);
+    background(200);
+    fill(255);
+    image(frame, 0, 0, window.innerWidth, window.innerHeight);
 }
 
 function draw() {
-  drawFace((window.innerWidth / 2) - 100, (window.innerHeight / 2) - 80, 7, 0);
+    drawFace((window.innerWidth / 2) - 100, (window.innerHeight / 2) - 80, 7, 0);
 }
 
 function drawFace(x, y, LR, OU) {
@@ -38,39 +38,39 @@ function drawFace(x, y, LR, OU) {
     // Gesicht
     fill(hautfarbe);
     ellipse(100, 100, 220, 280);
-  // Auge links
-  fill(255);
-  ellipse(50, 50, 40);
-  fill(augenfarbe);
-  ellipse(50 + LR, 50 + OU, 20);
-  fill(0);
-  ellipse(50 + LR, 50 + OU, 10);
-  // Auge rechts
-  fill(255);
-  ellipse(150, 50, 40);
-  fill(augenfarbe);
-  ellipse(150 + LR, 50 + OU, 20);
-  fill(0);
-  ellipse(150 + LR, 50 + OU, 10);
-  // Nase
-  fill(hautfarbe2);
-  triangle(100, 75, 75, 110, 125, 110);
-  // Mund
-  fill(mundfarbe);
-  arc(100, 150, 120, 100, 0, PI, CHORD);
-  // Zaehne
-  fill(255);
-  rect(50, 150, 20, 10);
-  rect(75, 150, 20, 10);
-  rect(100, 150, 20, 10);
-  rect(125, 150, 20, 10);
-  rect(90, 195, 20, 5);
-  // Hut
-  fill(hutfarbe);
-  rect(0, -30, 200, 40, 20);
-  rect(25, -100, 150, 80, 10);
-  
-  pop();
+    // Auge links
+    fill(255);
+    ellipse(50, 50, 40);
+    fill(augenfarbe);
+    ellipse(50 + LR, 50 + OU, 20);
+    fill(0);
+    ellipse(50 + LR, 50 + OU, 10);
+    // Auge rechts
+    fill(255);
+    ellipse(150, 50, 40);
+    fill(augenfarbe);
+    ellipse(150 + LR, 50 + OU, 20);
+    fill(0);
+    ellipse(150 + LR, 50 + OU, 10);
+    // Nase
+    fill(hautfarbe2);
+    triangle(100, 75, 75, 110, 125, 110);
+    // Mund
+    fill(mundfarbe);
+    arc(100, 150, 120, 100, 0, PI, CHORD);
+    // Zaehne
+    fill(255);
+    rect(50, 150, 20, 10);
+    rect(75, 150, 20, 10);
+    rect(100, 150, 20, 10);
+    rect(125, 150, 20, 10);
+    rect(90, 195, 20, 5);
+    // Hut
+    fill(hutfarbe);
+    rect(0, -30, 200, 40, 20);
+    rect(25, -100, 150, 80, 10);
+
+    pop();
 }
 
 function keyPressed() {

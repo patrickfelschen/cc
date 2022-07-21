@@ -1,18 +1,18 @@
 class Face {
     constructor(LR = random(-7, 7),
-                OU= random(-7, 7),
-                r= random(0, 255),
-                g= random(0, 255),
-                b= random(0, 255),
+                OU = random(-7, 7),
+                r = random(0, 255),
+                g = random(0, 255),
+                b = random(0, 255),
                 nase = random(-20, 20),
                 hut = random(-20, 35),
-                mund= random(-100, 50),
-                z1= random(0, 1),
-                z2= random(0, 1),
-                z3= random(0, 1),
+                mund = random(-100, 50),
+                z1 = random(0, 1),
+                z2 = random(0, 1),
+                z3 = random(0, 1),
                 z4 = random(0, 1),
-                haare= random(0, 1),
-                blinzeln= random(0, 1)
+                haare = random(0, 1),
+                blinzeln = random(0, 1)
     ) {
         this._LR = LR;
         this._OU = OU;

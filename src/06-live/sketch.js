@@ -1,5 +1,5 @@
 let song, fft, spectrum;
-let selectedSong = 6;
+let selectedSong = 1;
 
 let currentScene;
 let scenes = [];
