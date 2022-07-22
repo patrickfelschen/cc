@@ -18,5 +18,5 @@ Ordner:  CC-SS22/<nachname-vorname>/05-poster
 
 50_cent_-_in_da_club.mp3
 ![Screenshot](exports/50_cent_-_in_da_club.mp3_HighRes.png)
-daft_punk_-_one_more_time.mp3
+right_said_fred_-_you_re_my_mate.mp3
 ![Screenshot](exports/right_said_fred_-_you_re_my_mate.mp3_HighRes.png)
