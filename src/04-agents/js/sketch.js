@@ -5,8 +5,7 @@ let flock;
 
 function setup() {
     canvas = createCanvas(windowWidth, windowHeight);
-    flock = new Flock();
-    flock.createBoids(100);
+    flock = new Flock(100);
 }
 
 function draw() {

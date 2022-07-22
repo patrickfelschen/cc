@@ -1,7 +1,8 @@
 class Scene {
-    constructor() {
+    constructor(data) {
+        this.data = data;
     }
 
-    render(data) {
+    render() {
     }
 }

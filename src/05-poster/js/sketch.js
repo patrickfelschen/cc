@@ -1,3 +1,6 @@
+// Erstellt mittels Taste "p" ein Array mit erfassten Musikdaten.
+// Erstellt mittels Taste "e" einen HighRes-Export der erfassten Musikdaten.
+
 let song, fft, spectrum;
 let selectedSong = 0;
 
@@ -77,8 +80,9 @@ function draw() {
 
     songData.push(data);
 
-    //drawFrame(data);
-    //image(buffer, 0, 0);
+    // Vermindert die Framerate und somit die Qualität des Endbildes
+    // drawFrame(data);
+    // image(buffer, 0, 0);
 }
 
 function drawFrame(data) {
@@ -105,26 +109,31 @@ function drawFrame(data) {
 
         buffer.noStroke();
         if (i < s) {
+            // Bass Abschnitt zeichnen
             x = data.bassAmp * cosI;
             y = data.bassAmp * sinI;
             buffer.fill(bassColor);
             buffer.ellipse(x, y, eSize);
         } else if (i < 2 * s) {
+            // LowMid Abschnitt zeichnen
             x = data.lowMidAmp * cosI;
             y = data.lowMidAmp * sinI;
             buffer.fill(lowMidColor);
             buffer.ellipse(x, y, eSize);
         } else if (i < 3 * s) {
+            // Mid Abschnitt zeichnen
             x = data.midAmp * cosI;
             y = data.midAmp * sinI;
             buffer.fill(midColor);
             buffer.ellipse(x, y, eSize);
         } else if (i < 4 * s) {
+            // HighMid Abschnitt zeichnen
             x = data.highMidAmp * cosI;
             y = data.highMidAmp * sinI;
             buffer.fill(highMidColor);
             buffer.ellipse(x, y, eSize);
         } else if (i < 5 * s) {
+            // High Abschnitt zeichnen
             x = data.highAmp * cosI;
             y = data.highAmp * sinI;
             buffer.fill(highColor);
@@ -134,6 +143,8 @@ function drawFrame(data) {
     buffer.pop();
 }
 
+// Zeichnet alle Frames übereinander anhand der
+// Musikdaten
 function drawMusic() {
 
     songData.forEach(data => {
@@ -143,6 +154,7 @@ function drawMusic() {
     image(buffer, 0, 0);
 }
 
+// HighRes Poster exportieren
 function exportHighResolution() {
     scaleRatio = exportRatio;
 

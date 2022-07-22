@@ -21,15 +21,14 @@ function draw() {
 }
 
 function drawFace(x, y, LR, OU) {
-    push();
-    translate(x, y);
-
     const hautfarbe = color('#FFCC99');
     const hautfarbe2 = color('#FEB186');
     const augenfarbe = color('green');
     const mundfarbe = color('darkred');
     const hutfarbe = color('darkblue');
 
+    push();
+    translate(x, y);
     noStroke();
     // Ohren
     fill(hautfarbe2);
@@ -72,7 +71,6 @@ function drawFace(x, y, LR, OU) {
     fill(hutfarbe);
     rect(0, -30, 200, 40, 20);
     rect(25, -100, 150, 80, 10);
-
     pop();
 }
 

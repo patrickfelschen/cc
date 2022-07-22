@@ -1,5 +1,7 @@
+// Startet mittels Taste "p" die Musik-Visualisierung
+
 let song, fft, spectrum;
-let selectedSong = 1;
+let selectedSong = 0;
 
 let currentScene;
 let scenes = [];
@@ -15,7 +17,7 @@ const songs = [
 ];
 
 let canvas;
-let time = 0;
+let timeCounter = 0;
 
 function preload() {
     song = loadSound('../../data/' + songs[selectedSong]);
@@ -25,23 +27,27 @@ function setup() {
     canvas = createCanvas(windowWidth, windowHeight);
     fft = new p5.FFT();
 
+    // Szenen erstellen
     scenes[0] = new CircularScene();
     scenes[1] = new FaceScene();
     scenes[2] = new BoidScene();
 
+    // Erste Szene setzen
     currentScene = random(scenes);
 }
 
+// Szenen alle 4 Sekunden random wechseln
 function draw() {
     if (!song.isPlaying()) return;
 
-    time += deltaTime;
+    timeCounter += deltaTime;
 
-    if (time >= 4000) {
+    if (timeCounter >= 4000) {
         currentScene = random(scenes);
-        time = 0;
+        timeCounter = 0;
     }
 
+    // Musikdaten erfassen
     spectrum = fft.analyze();
 
     let minAmp = 0;
@@ -70,8 +76,12 @@ function draw() {
         "highAmp": highAmp
     });
 
+    // Hintergrundfarbe anhand Bass, Mid, Treble
     background(fft.getEnergy("bass") / 2, fft.getEnergy("mid") / 2, fft.getEnergy("treble") / 2);
-    currentScene.render(data);
+
+    // aktuelle Szene anzeigen
+    currentScene.data = data;
+    currentScene.render();
 }
 
 function keyPressed() {

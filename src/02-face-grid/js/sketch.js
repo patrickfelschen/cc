@@ -46,6 +46,7 @@ function draw() {
     // Transform (scale) all the drawings
     buffer.scale(scaleRatio);
 
+    // Grid erstellen rows x cols
     let i = 0;
     for (let row = 0; row < rows; row++) {
         for (let col = 0; col < cols; col++) {
@@ -63,13 +64,14 @@ function draw() {
     image(buffer, 0, 0);
 }
 
-
+// Liste aus random Face-Parametern generieren
 function generateFaceParamsList() {
     for (let i = 0; i < cols * rows; i++) {
         faceParamsList[i] = generateFaceParams();
     }
 }
 
+// Random Face-Parameter generieren
 function generateFaceParams() {
     return ({
         "LR": random(-7, 7),
@@ -89,10 +91,11 @@ function generateFaceParams() {
     });
 }
 
-function drawFace(x, y, face) {
+// Face zeichnen anhand Position und Face-Parametern
+function drawFace(x, y, face, scale = 0.3) {
     buffer.push();
     buffer.translate(x, y);
-    buffer.scale(0.3);
+    buffer.scale(scale);
 
     const hautfarbe = color('#FFCC99');
     const hautfarbe2 = color('#FEB186');
@@ -166,6 +169,7 @@ function drawFace(x, y, face) {
     buffer.pop();
 }
 
+// HighRes Grid exportieren
 function exportHighResolution() {
     scaleRatio = exportRatio;
 

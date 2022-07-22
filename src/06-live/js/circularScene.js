@@ -1,17 +1,19 @@
 class CircularScene extends Scene {
-    constructor(alpha = 0.8) {
-        super();
+    constructor(data, alpha = 0.8) {
+        super(data);
 
+        // Farben pro Amplitude
         this.bassColor = 'rgba(255, 100, 100, ' + alpha + ')';
         this.lowMidColor = 'rgba(255, 255, 100, ' + alpha + ')';
         this.midColor = 'rgba(100, 255, 100, ' + alpha + ')';
         this.highMidColor = 'rgba(255, 100, 255, ' + alpha + ')';
         this.highColor = 'rgba(100, 100, 255, ' + alpha + ')';
+
+        // Größe der Kreise
         this.eSize = 50;
     }
 
-    render(data) {
-
+    render() {
         push();
         angleMode(DEGREES);
         translate(windowWidth / 2, windowHeight / 2);
@@ -25,32 +27,37 @@ class CircularScene extends Scene {
             let sinI = sin(i);
 
             if (i < s) {
-                x = data.bassAmp * cosI;
-                y = data.bassAmp * sinI;
+                // Bass Kreis zeichnen
+                x = this.data.bassAmp * cosI;
+                y = this.data.bassAmp * sinI;
                 noStroke();
                 fill(this.bassColor);
                 ellipse(x, y, this.eSize);
             } else if (i < 2 * s) {
-                x = data.lowMidAmp * cosI;
-                y = data.lowMidAmp * sinI;
+                // LowMid Kreis zeichnen
+                x = this.data.lowMidAmp * cosI;
+                y = this.data.lowMidAmp * sinI;
                 noStroke();
                 fill(this.lowMidColor);
                 ellipse(x, y, this.eSize);
             } else if (i < 3 * s) {
-                x = data.midAmp * cosI;
-                y = data.midAmp * sinI;
+                // Mid Kreis zeichnen
+                x = this.data.midAmp * cosI;
+                y = this.data.midAmp * sinI;
                 noStroke();
                 fill(this.midColor);
                 ellipse(x, y, this.eSize);
             } else if (i < 4 * s) {
-                x = data.highMidAmp * cosI;
-                y = data.highMidAmp * sinI;
+                // HighMid Kreis zeichnen
+                x = this.data.highMidAmp * cosI;
+                y = this.data.highMidAmp * sinI;
                 noStroke();
                 fill(this.highMidColor);
                 ellipse(x, y, this.eSize);
             } else if (i < 5 * s) {
-                x = data.highAmp * cosI;
-                y = data.highAmp * sinI;
+                // High Kreis zeichnen
+                x = this.data.highAmp * cosI;
+                y = this.data.highAmp * sinI;
                 noStroke();
                 fill(this.highColor);
                 ellipse(x, y, this.eSize);

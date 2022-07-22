@@ -19,10 +19,12 @@ function draw() {
     drawFace();
 }
 
+// Generiert ein neues random Face
 function generateNewFace() {
     currentFace = new Face();
 }
 
+// Zeichnet aktuelles Face in der mitte des Fensters
 function drawFace() {
     const x = (window.innerWidth / 2) - 100;
     const y = (window.innerHeight / 2) - 80;

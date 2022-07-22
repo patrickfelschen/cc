@@ -193,6 +193,7 @@ class Face {
         this._blinzeln = value;
     }
 
+    // Face mit gesetzten Parametern zeichnen
     render() {
         push();
 
